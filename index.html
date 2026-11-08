@@ -1,1602 +1,1398 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FIFA 20 • Bettoline League</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<style>
-  body{font-family:'Space Grotesk',system-ui;background:#090d14;color:#e6f0ff}
-  .mono{font-family:'JetBrains Mono',monospace}
-  ::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:#1e2a3d;border-radius:8px}
-</style>
-</head>
-<body class="min-h-screen bg-[#080c13]">
-<div id="app"></div>
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIFA 20 • Bettoline League</title><script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>body{font-family:'Space Grotesk',system-ui;background:#090d14;color:#e6f0ff}.mono{font-family:'JetBrains Mono',monospace}input{background:#1e2a3d;border:1px solid #334155;border-radius:8px;padding:5px 6px;width:52px;text-align:center;color:#fff;font-weight:700}.cal-scroll::-webkit-scrollbar{width:6px}.cal-scroll::-webkit-scrollbar-thumb{background:#1e2a3d;border-radius:8px}</style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.mx-1{margin-left:0.25rem;margin-right:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-6{margin-bottom:1.5rem}.mt-2{margin-top:0.5rem}.mb-5{margin-bottom:1.25rem}.ml-auto{margin-left:auto}.mt-3{margin-top:0.75rem}.flex{display:flex}.grid{display:grid}.max-h-\[820px\]{max-height:820px}.min-h-screen{min-height:100vh}.w-full{width:100%}.max-w-\[640px\]{max-width:640px}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-\[\#22ff88\]\/20{border-color:rgb(34 255 136 / 0.2)}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.border-\[\#ff3b9a\]\/20{border-color:rgb(255 59 154 / 0.2)}.bg-\[\#080c13\]{--tw-bg-opacity:1;background-color:rgb(8 12 19 / var(--tw-bg-opacity, 1))}.bg-\[\#121a29\]{--tw-bg-opacity:1;background-color:rgb(18 26 41 / var(--tw-bg-opacity, 1))}.bg-\[\#22ff88\]\/15{background-color:rgb(34 255 136 / 0.15)}.bg-amber-500\/15{background-color:rgb(245 158 11 / 0.15)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-white\/5{background-color:rgb(255 255 255 / 0.05)}.bg-white\/\[0\.03\]{background-color:rgb(255 255 255 / 0.03)}.bg-\[\#22ff88\]{--tw-bg-opacity:1;background-color:rgb(34 255 136 / var(--tw-bg-opacity, 1))}.bg-\[\#ff3b9a\]\/15{background-color:rgb(255 59 154 / 0.15)}.bg-red-500\/20{background-color:rgb(239 68 68 / 0.2)}.p-4{padding:1rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-\[11px\]{padding-top:11px;padding-bottom:11px}.px-3{padding-left:0.75rem;padding-right:0.75rem}.text-left{text-align:left}.text-right{text-align:right}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[13px\]{font-size:13px}.text-\[15px\]{font-size:15px}.text-\[30px\]{font-size:30px}.font-bold{font-weight:700}.font-medium{font-weight:500}.leading-none{line-height:1}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-widest{letter-spacing:0.1em}.text-\[\#22ff88\]{--tw-text-opacity:1;color:rgb(34 255 136 / var(--tw-text-opacity, 1))}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-white\/30{color:rgb(255 255 255 / 0.3)}.text-white\/40{color:rgb(255 255 255 / 0.4)}.text-white\/50{color:rgb(255 255 255 / 0.5)}.text-white\/70{color:rgb(255 255 255 / 0.7)}.text-white\/80{color:rgb(255 255 255 / 0.8)}.text-\[\#ff3b9a\]{--tw-text-opacity:1;color:rgb(255 59 154 / var(--tw-text-opacity, 1))}.text-red-300{--tw-text-opacity:1;color:rgb(252 165 165 / var(--tw-text-opacity, 1))}.text-white\/60{color:rgb(255 255 255 / 0.6)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.first\:mt-0:first-child{margin-top:0px}@media (min-width: 768px){.md\:flex-row{flex-direction:row}.md\:items-end{align-items:flex-end}.md\:text-\[36px\]{font-size:36px}}@media (min-width: 1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}</style></head><body class="min-h-screen bg-[#080c13]"><div id="app"><div style="max-width:1280px;margin:auto;padding:20px 16px 40px">
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+<div><div class="flex items-center gap-3 flex-wrap"><h1 class="text-[30px] md:text-[36px] font-bold leading-none tracking-tight">FIFA 20 <span class="text-white/40">BETTOLINE</span></h1><span class="px-2.5 py-1 rounded-full bg-[#22ff88]/15 text-[#22ff88] text-[11px] font-bold tracking-widest mono border border-[#22ff88]/20">● LIVE</span><span class="px-2.5 py-1 rounded-full bg-[#ff3b9a]/15 text-[#ff3b9a] text-[11px] font-bold tracking-widest mono border border-[#ff3b9a]/20">ADMIN MODE</span></div>
+<p class="mt-2 text-[13px] text-white/50 max-w-[640px]">Fix critico: admin si attiva con <span class="mono bg-white/10 px-1 rounded text-white/80">?admin=bettoline</span> o <span class="mono bg-white/10 px-1 rounded text-white/80">#admin</span> o bottone password. Logica tavolino "_" = 0-3, doppio "_" = 0-0 (GS 3-3, 0 pt). Tailwind CDN + vanilla JS puro.</p></div>
+<div class="flex gap-2 shrink-0"><button onclick="resetAll()" class="px-3 py-2 rounded-full bg-red-500/20 text-red-300 text-[12px] font-bold">Reset</button><button onclick="salvaPubblica()" class="px-4 py-2 rounded-xl bg-[#22ff88] text-black font-bold text-[12px]">Salva e Pubblica ↓</button><button onclick="esciAdmin()" class="px-3 py-2 rounded-full bg-white text-black font-bold text-[12px]">Esci → View</button></div>
+</header>
+<div class="flex flex-wrap items-center gap-2 mb-5"><button onclick="tabAdmin='classifica';render()" class="px-4 py-2 rounded-full text-[12px] font-bold bg-white/10 text-white/60">CLASSIFICA</button><button onclick="tabAdmin='calendario';render()" class="px-4 py-2 rounded-full text-[12px] font-bold bg-white text-black">CALENDARIO EDITABILE</button><span class="ml-auto mono text-[11px] text-white/40">43 giocate / 190 totali • localStorage attivo</span></div>
+<div class="grid lg:grid-cols-2 gap-5 items-start"><div class="bg-[#121a29] border border-white/10 rounded-2xl overflow-hidden shadow-2xl"><div class="flex justify-between items-center px-5 py-4 border-b border-white/10"><h2 class="font-bold tracking-wide text-[15px]">CLASSIFICA LIVE</h2><span class="mono text-[11px] text-white/40">Pt &nbsp;•&nbsp; DR &nbsp;•&nbsp; GF</span></div>
+<table class="w-full text-[13px]"><thead><tr class="text-white/40 text-left text-[11px]"><th class="py-3 px-5 font-medium">#</th><th class="font-medium">SQUADRA</th><th class="font-medium">Pt</th><th class="font-medium">G</th><th class="font-medium">V</th><th class="font-medium">N</th><th class="font-medium">P</th><th class="font-medium">GF</th><th class="font-medium">GS</th><th class="font-medium">DR</th></tr></thead><tbody><tr class="border-t border-white/5 bg-white/[0.03]"><td class="py-[11px] px-5 text-white/50">1</td><td class="font-bold">Colombia</td><td class="font-bold">15</td><td class="text-white/70">5</td><td class="text-white/70">5</td><td class="text-white/70">0</td><td class="text-white/70">0</td><td class="font-bold">27</td><td class="text-white/70">0</td><td class="font-bold text-[#22ff88]">+27</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">2</td><td class="font-bold">Grecia</td><td class="font-bold">12</td><td class="text-white/70">4</td><td class="text-white/70">4</td><td class="text-white/70">0</td><td class="text-white/70">0</td><td class="font-bold">12</td><td class="text-white/70">0</td><td class="font-bold text-[#22ff88]">+12</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">3</td><td class="font-bold">Ungheria</td><td class="font-bold">12</td><td class="text-white/70">5</td><td class="text-white/70">4</td><td class="text-white/70">0</td><td class="text-white/70">1</td><td class="font-bold">13</td><td class="text-white/70">3</td><td class="font-bold text-[#22ff88]">+10</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">4</td><td class="font-bold">Russia</td><td class="font-bold">9</td><td class="text-white/70">4</td><td class="text-white/70">3</td><td class="text-white/70">0</td><td class="text-white/70">1</td><td class="font-bold">9</td><td class="text-white/70">3</td><td class="font-bold text-[#22ff88]">+6</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">5</td><td class="font-bold">Galles</td><td class="font-bold">9</td><td class="text-white/70">5</td><td class="text-white/70">3</td><td class="text-white/70">0</td><td class="text-white/70">2</td><td class="font-bold">14</td><td class="text-white/70">9</td><td class="font-bold text-[#22ff88]">+5</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">6</td><td class="font-bold">Bolivia</td><td class="font-bold">9</td><td class="text-white/70">5</td><td class="text-white/70">3</td><td class="text-white/70">0</td><td class="text-white/70">2</td><td class="font-bold">13</td><td class="text-white/70">10</td><td class="font-bold text-[#22ff88]">+3</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">7</td><td class="font-bold">Messico</td><td class="font-bold">9</td><td class="text-white/70">5</td><td class="text-white/70">3</td><td class="text-white/70">0</td><td class="text-white/70">2</td><td class="font-bold">10</td><td class="text-white/70">8</td><td class="font-bold text-[#22ff88]">+2</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">8</td><td class="font-bold">Sudafrica</td><td class="font-bold">9</td><td class="text-white/70">4</td><td class="text-white/70">3</td><td class="text-white/70">0</td><td class="text-white/70">1</td><td class="font-bold">7</td><td class="text-white/70">5</td><td class="font-bold text-[#22ff88]">+2</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">9</td><td class="font-bold">Belgio</td><td class="font-bold">6</td><td class="text-white/70">3</td><td class="text-white/70">2</td><td class="text-white/70">0</td><td class="text-white/70">1</td><td class="font-bold">9</td><td class="text-white/70">5</td><td class="font-bold text-[#22ff88]">+4</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">10</td><td class="font-bold">Rep. Ceca</td><td class="font-bold">6</td><td class="text-white/70">3</td><td class="text-white/70">2</td><td class="text-white/70">0</td><td class="text-white/70">1</td><td class="font-bold">6</td><td class="text-white/70">5</td><td class="font-bold text-[#22ff88]">+1</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">11</td><td class="font-bold">Romania</td><td class="font-bold">6</td><td class="text-white/70">4</td><td class="text-white/70">2</td><td class="text-white/70">0</td><td class="text-white/70">2</td><td class="font-bold">6</td><td class="text-white/70">5</td><td class="font-bold text-[#22ff88]">+1</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">12</td><td class="font-bold">Cina</td><td class="font-bold">6</td><td class="text-white/70">3</td><td class="text-white/70">2</td><td class="text-white/70">0</td><td class="text-white/70">1</td><td class="font-bold">5</td><td class="text-white/70">5</td><td class="font-bold text-white/70">0</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">13</td><td class="font-bold">Ecuador</td><td class="font-bold">6</td><td class="text-white/70">5</td><td class="text-white/70">2</td><td class="text-white/70">0</td><td class="text-white/70">3</td><td class="font-bold">8</td><td class="text-white/70">11</td><td class="font-bold text-red-400">-3</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">14</td><td class="font-bold">India</td><td class="font-bold">6</td><td class="text-white/70">4</td><td class="text-white/70">2</td><td class="text-white/70">0</td><td class="text-white/70">2</td><td class="font-bold">6</td><td class="text-white/70">12</td><td class="font-bold text-red-400">-6</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">15</td><td class="font-bold">Inghilterra</td><td class="font-bold">3</td><td class="text-white/70">5</td><td class="text-white/70">1</td><td class="text-white/70">0</td><td class="text-white/70">4</td><td class="font-bold">7</td><td class="text-white/70">11</td><td class="font-bold text-red-400">-4</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">16</td><td class="font-bold">Canada</td><td class="font-bold">3</td><td class="text-white/70">5</td><td class="text-white/70">1</td><td class="text-white/70">0</td><td class="text-white/70">4</td><td class="font-bold">3</td><td class="text-white/70">12</td><td class="font-bold text-red-400">-9</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">17</td><td class="font-bold">Norvegia</td><td class="font-bold">3</td><td class="text-white/70">4</td><td class="text-white/70">1</td><td class="text-white/70">0</td><td class="text-white/70">3</td><td class="font-bold">3</td><td class="text-white/70">12</td><td class="font-bold text-red-400">-9</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">18</td><td class="font-bold">Turchia</td><td class="font-bold">0</td><td class="text-white/70">3</td><td class="text-white/70">0</td><td class="text-white/70">0</td><td class="text-white/70">3</td><td class="font-bold">1</td><td class="text-white/70">10</td><td class="font-bold text-red-400">-9</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">19</td><td class="font-bold">Peru</td><td class="font-bold">0</td><td class="text-white/70">5</td><td class="text-white/70">0</td><td class="text-white/70">0</td><td class="text-white/70">5</td><td class="font-bold">0</td><td class="text-white/70">9</td><td class="font-bold text-red-400">-9</td></tr><tr class="border-t border-white/5 "><td class="py-[11px] px-5 text-white/50">20</td><td class="font-bold">N.Zelanda</td><td class="font-bold">0</td><td class="text-white/70">5</td><td class="text-white/70">0</td><td class="text-white/70">0</td><td class="text-white/70">5</td><td class="font-bold">3</td><td class="text-white/70">27</td><td class="font-bold text-red-400">-24</td></tr></tbody></table></div><div class="bg-[#121a29] border border-white/10 rounded-2xl overflow-hidden shadow-2xl"><div class="flex justify-between items-center px-5 py-4 border-b border-white/10"><h2 class="font-bold tracking-wide text-[15px]">CALENDARIO</h2><div class="flex gap-1.5"><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span><span class="px-2 py-1 rounded-md bg-amber-500/15 text-amber-300 text-[10px] font-bold">Tavolino</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div></div><div class="cal-scroll p-4 "><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 1</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="0" data-f="gc" value="2"><span class="text-white/30">-</span><input data-i="0" data-f="gt" value="0"><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="1" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="1" data-f="gt" value="1"><span class="flex-1 font-medium">Galles</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="2" data-f="gc" value="1"><span class="text-white/30">-</span><input data-i="2" data-f="gt" value="0"><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="3" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="3" data-f="gt" value="5"><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Messico</span><input data-i="4" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="4" data-f="gt" value="3"><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="5" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="5" data-f="gt" value="6"><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="6" data-f="gc" value="2"><span class="text-white/30">-</span><input data-i="6" data-f="gt" value="4"><span class="flex-1 font-medium">Ecuador</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="7" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="7" data-f="gt" value=""><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Romania</span><input data-i="8" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="8" data-f="gt" value=""><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Sudafrica</span><input data-i="9" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="9" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 2</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="10" data-f="gc" value="2"><span class="text-white/30">-</span><input data-i="10" data-f="gt" value="3"><span class="flex-1 font-medium">Rep. Ceca</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="11" data-f="gc" value="2"><span class="text-white/30">-</span><input data-i="11" data-f="gt" value="3"><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="12" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="12" data-f="gt" value="0"><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Belgio</span><input data-i="13" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="13" data-f="gt" value="2"><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="14" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="14" data-f="gt" value="1"><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="15" data-f="gc" value="2"><span class="text-white/30">-</span><input data-i="15" data-f="gt" value="3"><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="16" data-f="gc" value="2"><span class="text-white/30">-</span><input data-i="16" data-f="gt" value="0"><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Colombia</span><input data-i="17" data-f="gc" value="5"><span class="text-white/30">-</span><input data-i="17" data-f="gt" value="0"><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="18" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="18" data-f="gt" value="1"><span class="flex-1 font-medium">N.Zelanda</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Peru</span><input data-i="19" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="19" data-f="gt" value="2"><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 3</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="20" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="20" data-f="gt" value="0"><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="21" data-f="gc" value="2"><span class="text-white/30">-</span><input data-i="21" data-f="gt" value="0"><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Sudafrica</span><input data-i="22" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="22" data-f="gt" value="0"><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="23" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="23" data-f="gt" value="8"><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Grecia</span><input data-i="24" data-f="gc" value="1"><span class="text-white/30">-</span><input data-i="24" data-f="gt" value="0"><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="25" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="25" data-f="gt" value="0"><span class="flex-1 font-medium">Norvegia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="26" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="26" data-f="gt" value="0"><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="27" data-f="gc" value="4"><span class="text-white/30">-</span><input data-i="27" data-f="gt" value="2"><span class="flex-1 font-medium">N.Zelanda</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="28" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="28" data-f="gt" value="0"><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Cina</span><input data-i="29" data-f="gc" value="2"><span class="text-white/30">-</span><input data-i="29" data-f="gt" value="0"><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 4</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="30" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="30" data-f="gt" value=""><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Grecia</span><input data-i="31" data-f="gc" value="4"><span class="text-white/30">-</span><input data-i="31" data-f="gt" value="0"><span class="flex-1 font-medium">Ecuador</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="32" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="32" data-f="gt" value="3"><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="33" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="33" data-f="gt" value="3"><span class="flex-1 font-medium">Russia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Turchia</span><input data-i="34" data-f="gc" value="1"><span class="text-white/30">-</span><input data-i="34" data-f="gt" value="4"><span class="flex-1 font-medium">Bolivia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="35" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="35" data-f="gt" value="9"><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="36" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="36" data-f="gt" value="0"><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Sudafrica</span><input data-i="37" data-f="gc" value="1"><span class="text-white/30">-</span><input data-i="37" data-f="gt" value="0"><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Inghilterra</span><input data-i="38" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="38" data-f="gt" value="3"><span class="flex-1 font-medium">Galles</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Canada</span><input data-i="39" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="39" data-f="gt" value="3"><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 5</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="40" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="40" data-f="gt" value=""><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Belgio</span><input data-i="41" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="41" data-f="gt" value=""><span class="flex-1 font-medium">Russia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Cina</span><input data-i="42" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="42" data-f="gt" value=""><span class="flex-1 font-medium">Norvegia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Peru</span><input data-i="43" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="43" data-f="gt" value="2"><span class="flex-1 font-medium">India</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Romania</span><input data-i="44" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="44" data-f="gt" value="0"><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="45" data-f="gc" value="1"><span class="text-white/30">-</span><input data-i="45" data-f="gt" value="4"><span class="flex-1 font-medium">Ungheria</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Sudafrica</span><input data-i="46" data-f="gc" value="3"><span class="text-white/30">-</span><input data-i="46" data-f="gt" value="0"><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="47" data-f="gc" value="0"><span class="text-white/30">-</span><input data-i="47" data-f="gt" value="2"><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Messico</span><input data-i="48" data-f="gc" value="5"><span class="text-white/30">-</span><input data-i="48" data-f="gt" value="4"><span class="flex-1 font-medium">Galles</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Grecia</span><input data-i="49" data-f="gc" value="6"><span class="text-white/30">-</span><input data-i="49" data-f="gt" value="0"><span class="flex-1 font-medium">N.Zelanda</span><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 6</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Grecia</span><input data-i="50" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="50" data-f="gt" value=""><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="51" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="51" data-f="gt" value=""><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="52" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="52" data-f="gt" value=""><span class="flex-1 font-medium">Ungheria</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Messico</span><input data-i="53" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="53" data-f="gt" value=""><span class="flex-1 font-medium">N.Zelanda</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="54" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="54" data-f="gt" value=""><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Romania</span><input data-i="55" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="55" data-f="gt" value=""><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="56" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="56" data-f="gt" value=""><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="57" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="57" data-f="gt" value=""><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="58" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="58" data-f="gt" value=""><span class="flex-1 font-medium">Bolivia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Inghilterra</span><input data-i="59" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="59" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 7</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="60" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="60" data-f="gt" value=""><span class="flex-1 font-medium">N.Zelanda</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="61" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="61" data-f="gt" value=""><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="62" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="62" data-f="gt" value=""><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="63" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="63" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Cina</span><input data-i="64" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="64" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Turchia</span><input data-i="65" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="65" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Romania</span><input data-i="66" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="66" data-f="gt" value=""><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="67" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="67" data-f="gt" value=""><span class="flex-1 font-medium">Ungheria</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="68" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="68" data-f="gt" value=""><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="69" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="69" data-f="gt" value=""><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 8</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="70" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="70" data-f="gt" value=""><span class="flex-1 font-medium">India</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="71" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="71" data-f="gt" value=""><span class="flex-1 font-medium">Norvegia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Turchia</span><input data-i="72" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="72" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Cina</span><input data-i="73" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="73" data-f="gt" value=""><span class="flex-1 font-medium">N.Zelanda</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Peru</span><input data-i="74" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="74" data-f="gt" value=""><span class="flex-1 font-medium">Ecuador</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="75" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="75" data-f="gt" value=""><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Grecia</span><input data-i="76" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="76" data-f="gt" value=""><span class="flex-1 font-medium">Rep. Ceca</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Inghilterra</span><input data-i="77" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="77" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Canada</span><input data-i="78" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="78" data-f="gt" value=""><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Romania</span><input data-i="79" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="79" data-f="gt" value=""><span class="flex-1 font-medium">Bolivia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 9</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="80" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="80" data-f="gt" value=""><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="81" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="81" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Belgio</span><input data-i="82" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="82" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Peru</span><input data-i="83" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="83" data-f="gt" value=""><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="84" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="84" data-f="gt" value=""><span class="flex-1 font-medium">Bolivia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Inghilterra</span><input data-i="85" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="85" data-f="gt" value=""><span class="flex-1 font-medium">Rep. Ceca</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Romania</span><input data-i="86" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="86" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="87" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="87" data-f="gt" value=""><span class="flex-1 font-medium">Russia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Turchia</span><input data-i="88" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="88" data-f="gt" value=""><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="89" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="89" data-f="gt" value=""><span class="flex-1 font-medium">Ecuador</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 10</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="90" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="90" data-f="gt" value=""><span class="flex-1 font-medium">Bolivia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="91" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="91" data-f="gt" value=""><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Colombia</span><input data-i="92" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="92" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="93" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="93" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Messico</span><input data-i="94" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="94" data-f="gt" value=""><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="95" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="95" data-f="gt" value=""><span class="flex-1 font-medium">Galles</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Canada</span><input data-i="96" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="96" data-f="gt" value=""><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="97" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="97" data-f="gt" value=""><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="98" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="98" data-f="gt" value=""><span class="flex-1 font-medium">Ecuador</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Belgio</span><input data-i="99" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="99" data-f="gt" value=""><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 11</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Colombia</span><input data-i="100" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="100" data-f="gt" value=""><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="101" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="101" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Inghilterra</span><input data-i="102" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="102" data-f="gt" value=""><span class="flex-1 font-medium">Russia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Peru</span><input data-i="103" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="103" data-f="gt" value=""><span class="flex-1 font-medium">Rep. Ceca</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="104" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="104" data-f="gt" value=""><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="105" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="105" data-f="gt" value=""><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="106" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="106" data-f="gt" value=""><span class="flex-1 font-medium">Norvegia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="107" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="107" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Canada</span><input data-i="108" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="108" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="109" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="109" data-f="gt" value=""><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 12</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Turchia</span><input data-i="110" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="110" data-f="gt" value=""><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="111" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="111" data-f="gt" value=""><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Cina</span><input data-i="112" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="112" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="113" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="113" data-f="gt" value=""><span class="flex-1 font-medium">N.Zelanda</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Romania</span><input data-i="114" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="114" data-f="gt" value=""><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Colombia</span><input data-i="115" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="115" data-f="gt" value=""><span class="flex-1 font-medium">Bolivia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="116" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="116" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Canada</span><input data-i="117" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="117" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="118" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="118" data-f="gt" value=""><span class="flex-1 font-medium">Galles</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="119" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="119" data-f="gt" value=""><span class="flex-1 font-medium">Norvegia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 13</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Colombia</span><input data-i="120" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="120" data-f="gt" value=""><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Messico</span><input data-i="121" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="121" data-f="gt" value=""><span class="flex-1 font-medium">Bolivia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="122" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="122" data-f="gt" value=""><span class="flex-1 font-medium">Russia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="123" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="123" data-f="gt" value=""><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Inghilterra</span><input data-i="124" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="124" data-f="gt" value=""><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="125" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="125" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="126" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="126" data-f="gt" value=""><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="127" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="127" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="128" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="128" data-f="gt" value=""><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="129" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="129" data-f="gt" value=""><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 14</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="130" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="130" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="131" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="131" data-f="gt" value=""><span class="flex-1 font-medium">India</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="132" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="132" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Romania</span><input data-i="133" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="133" data-f="gt" value=""><span class="flex-1 font-medium">Rep. Ceca</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="134" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="134" data-f="gt" value=""><span class="flex-1 font-medium">Ecuador</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Colombia</span><input data-i="135" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="135" data-f="gt" value=""><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Cina</span><input data-i="136" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="136" data-f="gt" value=""><span class="flex-1 font-medium">Galles</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="137" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="137" data-f="gt" value=""><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Turchia</span><input data-i="138" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="138" data-f="gt" value=""><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Belgio</span><input data-i="139" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="139" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 15</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="140" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="140" data-f="gt" value=""><span class="flex-1 font-medium">Galles</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="141" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="141" data-f="gt" value=""><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="142" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="142" data-f="gt" value=""><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="143" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="143" data-f="gt" value=""><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="144" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="144" data-f="gt" value=""><span class="flex-1 font-medium">Ecuador</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="145" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="145" data-f="gt" value=""><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Sudafrica</span><input data-i="146" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="146" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Cina</span><input data-i="147" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="147" data-f="gt" value=""><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Peru</span><input data-i="148" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="148" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="149" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="149" data-f="gt" value=""><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 16</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Turchia</span><input data-i="150" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="150" data-f="gt" value=""><span class="flex-1 font-medium">Ecuador</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Belgio</span><input data-i="151" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="151" data-f="gt" value=""><span class="flex-1 font-medium">Bolivia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Sudafrica</span><input data-i="152" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="152" data-f="gt" value=""><span class="flex-1 font-medium">Rep. Ceca</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="153" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="153" data-f="gt" value=""><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="154" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="154" data-f="gt" value=""><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Grecia</span><input data-i="155" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="155" data-f="gt" value=""><span class="flex-1 font-medium">India</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Peru</span><input data-i="156" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="156" data-f="gt" value=""><span class="flex-1 font-medium">Norvegia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Cina</span><input data-i="157" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="157" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Colombia</span><input data-i="158" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="158" data-f="gt" value=""><span class="flex-1 font-medium">Inghilterra</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="159" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="159" data-f="gt" value=""><span class="flex-1 font-medium">Russia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 17</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Belgio</span><input data-i="160" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="160" data-f="gt" value=""><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="161" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="161" data-f="gt" value=""><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Sudafrica</span><input data-i="162" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="162" data-f="gt" value=""><span class="flex-1 font-medium">Bolivia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="163" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="163" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Turchia</span><input data-i="164" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="164" data-f="gt" value=""><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="165" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="165" data-f="gt" value=""><span class="flex-1 font-medium">Rep. Ceca</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Inghilterra</span><input data-i="166" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="166" data-f="gt" value=""><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Grecia</span><input data-i="167" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="167" data-f="gt" value=""><span class="flex-1 font-medium">Galles</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Canada</span><input data-i="168" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="168" data-f="gt" value=""><span class="flex-1 font-medium">Norvegia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="169" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="169" data-f="gt" value=""><span class="flex-1 font-medium">Ungheria</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 18</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Romania</span><input data-i="170" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="170" data-f="gt" value=""><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Inghilterra</span><input data-i="171" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="171" data-f="gt" value=""><span class="flex-1 font-medium">Grecia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="172" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="172" data-f="gt" value=""><span class="flex-1 font-medium">Cina</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ungheria</span><input data-i="173" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="173" data-f="gt" value=""><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Norvegia</span><input data-i="174" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="174" data-f="gt" value=""><span class="flex-1 font-medium">N.Zelanda</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Russia</span><input data-i="175" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="175" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Canada</span><input data-i="176" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="176" data-f="gt" value=""><span class="flex-1 font-medium">Belgio</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="177" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="177" data-f="gt" value=""><span class="flex-1 font-medium">India</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Turchia</span><input data-i="178" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="178" data-f="gt" value=""><span class="flex-1 font-medium">Galles</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Ecuador</span><input data-i="179" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="179" data-f="gt" value=""><span class="flex-1 font-medium">Sudafrica</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA 19</h3><span class="mono text-[11px] text-white/40">10 match</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Bolivia</span><input data-i="180" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="180" data-f="gt" value=""><span class="flex-1 font-medium">Norvegia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">N.Zelanda</span><input data-i="181" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="181" data-f="gt" value=""><span class="flex-1 font-medium">Romania</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Rep. Ceca</span><input data-i="182" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="182" data-f="gt" value=""><span class="flex-1 font-medium">Colombia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Galles</span><input data-i="183" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="183" data-f="gt" value=""><span class="flex-1 font-medium">Ecuador</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">India</span><input data-i="184" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="184" data-f="gt" value=""><span class="flex-1 font-medium">Messico</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Inghilterra</span><input data-i="185" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="185" data-f="gt" value=""><span class="flex-1 font-medium">Ungheria</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Cina</span><input data-i="186" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="186" data-f="gt" value=""><span class="flex-1 font-medium">Canada</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Grecia</span><input data-i="187" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="187" data-f="gt" value=""><span class="flex-1 font-medium">Turchia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Sudafrica</span><input data-i="188" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="188" data-f="gt" value=""><span class="flex-1 font-medium">Russia</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div><div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">Belgio</span><input data-i="189" data-f="gc" value=""><span class="text-white/30">-</span><input data-i="189" data-f="gt" value=""><span class="flex-1 font-medium">Peru</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div></div></div></div><p class="text-white/50 text-[12px] mt-3">Modifica a destra, la classifica a sinistra si aggiorna da sola. Poi premi <b class="text-[#22ff88]">Salva e Pubblica ↓</b> in alto.</p>
+</div></div>
 <script>
-// ---- DATI EMBEDDED ----
-const SQUADRE = ["Ungheria","Rep. Ceca","Inghilterra","Colombia","Canada","Norvegia","Galles","Belgio","Cina","Ecuador","Bolivia","India","Russia","Messico","Peru","N.Zelanda","Romania","Turchia","Sudafrica","Grecia"];
+const SQUADRE=["Ungheria","Rep. Ceca","Inghilterra","Colombia","Canada","Norvegia","Galles","Belgio","Cina","Ecuador","Bolivia","India","Russia","Messico","Peru","N.Zelanda","Romania","Turchia","Sudafrica","Grecia"];
 const CALENDARIO_INIT = [
-  {
-    "g": 1,
-    "casa": "Bolivia",
-    "gc": 2,
-    "gt": 0,
-    "trasferta": "Peru"
-  },
-  {
-    "g": 1,
-    "casa": "Ungheria",
-    "gc": 3,
-    "gt": 1,
-    "trasferta": "Galles"
-  },
-  {
-    "g": 1,
-    "casa": "Russia",
-    "gc": 1,
-    "gt": 0,
-    "trasferta": "Canada"
-  },
-  {
-    "g": 1,
-    "casa": "N.Zelanda",
-    "gc": 0,
-    "gt": 5,
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 1,
-    "casa": "Messico",
-    "gc": 0,
-    "gt": 3,
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 1,
-    "casa": "Norvegia",
-    "gc": 0,
-    "gt": 6,
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 1,
-    "casa": "India",
-    "gc": 2,
-    "gt": 4,
-    "trasferta": "Ecuador"
-  },
-  {
-    "g": 1,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Cina"
-  },
-  {
-    "g": 1,
-    "casa": "Romania",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 1,
-    "casa": "Sudafrica",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 2,
-    "casa": "Bolivia",
-    "gc": 2,
-    "gt": 3,
-    "trasferta": "Rep. Ceca"
-  },
-  {
-    "g": 2,
-    "casa": "Russia",
-    "gc": 2,
-    "gt": 3,
-    "trasferta": "Cina"
-  },
-  {
-    "g": 2,
-    "casa": "Norvegia",
-    "gc": 3,
-    "gt": 0,
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 2,
-    "casa": "Belgio",
-    "gc": 3,
-    "gt": 2,
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 2,
-    "casa": "Ungheria",
-    "gc": 0,
-    "gt": 1,
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 2,
-    "casa": "Ecuador",
-    "gc": 2,
-    "gt": 3,
-    "trasferta": "Canada"
-  },
-  {
-    "g": 2,
-    "casa": "India",
-    "gc": 2,
-    "gt": 0,
-    "trasferta": "Romania"
-  },
-  {
-    "g": 2,
-    "casa": "Colombia",
-    "gc": 5,
-    "gt": 0,
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 2,
-    "casa": "Galles",
-    "gc": 3,
-    "gt": 1,
-    "trasferta": "N.Zelanda"
-  },
-  {
-    "g": 2,
-    "casa": "Peru",
-    "gc": 0,
-    "gt": 2,
-    "trasferta": "Messico"
-  },
-  {
-    "g": 3,
-    "casa": "Russia",
-    "gc": 3,
-    "gt": 0,
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 3,
-    "casa": "Ecuador",
-    "gc": 2,
-    "gt": 0,
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 3,
-    "casa": "Sudafrica",
-    "gc": 3,
-    "gt": 0,
-    "trasferta": "Romania"
-  },
-  {
-    "g": 3,
-    "casa": "India",
-    "gc": 0,
-    "gt": 9,
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 3,
-    "casa": "Grecia",
-    "gc": 1,
-    "gt": 0,
-    "trasferta": "Messico"
-  },
-  {
-    "g": 3,
-    "casa": "Rep. Ceca",
-    "gc": 3,
-    "gt": 0,
-    "trasferta": "Norvegia"
-  },
-  {
-    "g": 3,
-    "casa": "Galles",
-    "gc": 3,
-    "gt": 0,
-    "trasferta": "Canada"
-  },
-  {
-    "g": 3,
-    "casa": "Bolivia",
-    "gc": 4,
-    "gt": 2,
-    "trasferta": "N.Zelanda"
-  },
-  {
-    "g": 3,
-    "casa": "Ungheria",
-    "gc": 3,
-    "gt": 0,
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 3,
-    "casa": "Cina",
-    "gc": 2,
-    "gt": 0,
-    "trasferta": "Peru"
-  },
-  {
-    "g": 4,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 4,
-    "casa": "Grecia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ecuador"
-  },
-  {
-    "g": 4,
-    "casa": "Norvegia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 4,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Russia"
-  },
-  {
-    "g": 4,
-    "casa": "Turchia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Bolivia"
-  },
-  {
-    "g": 4,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 4,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Cina"
-  },
-  {
-    "g": 4,
-    "casa": "Sudafrica",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  },
-  {
-    "g": 4,
-    "casa": "Inghilterra",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Galles"
-  },
-  {
-    "g": 4,
-    "casa": "Canada",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Romania"
-  },
-  {
-    "g": 5,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 5,
-    "casa": "Belgio",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Russia"
-  },
-  {
-    "g": 5,
-    "casa": "Cina",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Norvegia"
-  },
-  {
-    "g": 5,
-    "casa": "Peru",
-    "gc": "",
-    "gt": "",
-    "trasferta": "India"
-  },
-  {
-    "g": 5,
-    "casa": "Romania",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 5,
-    "casa": "Bolivia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ungheria"
-  },
-  {
-    "g": 5,
-    "casa": "Sudafrica",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Canada"
-  },
-  {
-    "g": 5,
-    "casa": "Ecuador",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 5,
-    "casa": "Messico",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Galles"
-  },
-  {
-    "g": 5,
-    "casa": "Grecia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "N.Zelanda"
-  },
-  {
-    "g": 6,
-    "casa": "Grecia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 6,
-    "casa": "Norvegia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 6,
-    "casa": "Ecuador",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ungheria"
-  },
-  {
-    "g": 6,
-    "casa": "Messico",
-    "gc": "",
-    "gt": "",
-    "trasferta": "N.Zelanda"
-  },
-  {
-    "g": 6,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 6,
-    "casa": "Romania",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Cina"
-  },
-  {
-    "g": 6,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Canada"
-  },
-  {
-    "g": 6,
-    "casa": "Russia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  },
-  {
-    "g": 6,
-    "casa": "Galles",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Bolivia"
-  },
-  {
-    "g": 6,
-    "casa": "Inghilterra",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 7,
-    "casa": "Ecuador",
-    "gc": "",
-    "gt": "",
-    "trasferta": "N.Zelanda"
-  },
-  {
-    "g": 7,
-    "casa": "Russia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 7,
-    "casa": "Galles",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  },
-  {
-    "g": 7,
-    "casa": "Norvegia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 7,
-    "casa": "Cina",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 7,
-    "casa": "Turchia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 7,
-    "casa": "Romania",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 7,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ungheria"
-  },
-  {
-    "g": 7,
-    "casa": "Bolivia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 7,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Canada"
-  },
-  {
-    "g": 8,
-    "casa": "Russia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "India"
-  },
-  {
-    "g": 8,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Norvegia"
-  },
-  {
-    "g": 8,
-    "casa": "Turchia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 8,
-    "casa": "Cina",
-    "gc": "",
-    "gt": "",
-    "trasferta": "N.Zelanda"
-  },
-  {
-    "g": 8,
-    "casa": "Peru",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ecuador"
-  },
-  {
-    "g": 8,
-    "casa": "Galles",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 8,
-    "casa": "Grecia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Rep. Ceca"
-  },
-  {
-    "g": 8,
-    "casa": "Inghilterra",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 8,
-    "casa": "Canada",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 8,
-    "casa": "Romania",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Bolivia"
-  },
-  {
-    "g": 9,
-    "casa": "Galles",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 9,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 9,
-    "casa": "Belgio",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 9,
-    "casa": "Peru",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Canada"
-  },
-  {
-    "g": 9,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Bolivia"
-  },
-  {
-    "g": 9,
-    "casa": "Inghilterra",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Rep. Ceca"
-  },
-  {
-    "g": 9,
-    "casa": "Romania",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 9,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Russia"
-  },
-  {
-    "g": 9,
-    "casa": "Turchia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Cina"
-  },
-  {
-    "g": 9,
-    "casa": "Norvegia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ecuador"
-  },
-  {
-    "g": 10,
-    "casa": "Russia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Bolivia"
-  },
-  {
-    "g": 10,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  },
-  {
-    "g": 10,
-    "casa": "Colombia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 10,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 10,
-    "casa": "Messico",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Romania"
-  },
-  {
-    "g": 10,
-    "casa": "Norvegia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Galles"
-  },
-  {
-    "g": 10,
-    "casa": "Canada",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 10,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Cina"
-  },
-  {
-    "g": 10,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ecuador"
-  },
-  {
-    "g": 10,
-    "casa": "Belgio",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 11,
-    "casa": "Colombia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Cina"
-  },
-  {
-    "g": 11,
-    "casa": "Galles",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 11,
-    "casa": "Inghilterra",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Russia"
-  },
-  {
-    "g": 11,
-    "casa": "Peru",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Rep. Ceca"
-  },
-  {
-    "g": 11,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 11,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 11,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Norvegia"
-  },
-  {
-    "g": 11,
-    "casa": "Bolivia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 11,
-    "casa": "Canada",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 11,
-    "casa": "Ecuador",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Romania"
-  },
-  {
-    "g": 12,
-    "casa": "Turchia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 12,
-    "casa": "Ecuador",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 12,
-    "casa": "Cina",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 12,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "N.Zelanda"
-  },
-  {
-    "g": 12,
-    "casa": "Romania",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  },
-  {
-    "g": 12,
-    "casa": "Colombia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Bolivia"
-  },
-  {
-    "g": 12,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 12,
-    "casa": "Canada",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 12,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Galles"
-  },
-  {
-    "g": 12,
-    "casa": "Russia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Norvegia"
-  },
-  {
-    "g": 13,
-    "casa": "Colombia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 13,
-    "casa": "Messico",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Bolivia"
-  },
-  {
-    "g": 13,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Russia"
-  },
-  {
-    "g": 13,
-    "casa": "Galles",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Romania"
-  },
-  {
-    "g": 13,
-    "casa": "Inghilterra",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  },
-  {
-    "g": 13,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 13,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 13,
-    "casa": "Norvegia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 13,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Canada"
-  },
-  {
-    "g": 13,
-    "casa": "Ecuador",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Cina"
-  },
-  {
-    "g": 14,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 14,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "India"
-  },
-  {
-    "g": 14,
-    "casa": "Russia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 14,
-    "casa": "Romania",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Rep. Ceca"
-  },
-  {
-    "g": 14,
-    "casa": "Bolivia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ecuador"
-  },
-  {
-    "g": 14,
-    "casa": "Colombia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  },
-  {
-    "g": 14,
-    "casa": "Cina",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Galles"
-  },
-  {
-    "g": 14,
-    "casa": "Norvegia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 14,
-    "casa": "Turchia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Canada"
-  },
-  {
-    "g": 14,
-    "casa": "Belgio",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 15,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Galles"
-  },
-  {
-    "g": 15,
-    "casa": "Bolivia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Canada"
-  },
-  {
-    "g": 15,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 15,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 15,
-    "casa": "Russia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ecuador"
-  },
-  {
-    "g": 15,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 15,
-    "casa": "Sudafrica",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 15,
-    "casa": "Cina",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 15,
-    "casa": "Peru",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 15,
-    "casa": "Norvegia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Romania"
-  },
-  {
-    "g": 16,
-    "casa": "Turchia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ecuador"
-  },
-  {
-    "g": 16,
-    "casa": "Belgio",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Bolivia"
-  },
-  {
-    "g": 16,
-    "casa": "Sudafrica",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Rep. Ceca"
-  },
-  {
-    "g": 16,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Romania"
-  },
-  {
-    "g": 16,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Canada"
-  },
-  {
-    "g": 16,
-    "casa": "Grecia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "India"
-  },
-  {
-    "g": 16,
-    "casa": "Peru",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Norvegia"
-  },
-  {
-    "g": 16,
-    "casa": "Cina",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 16,
-    "casa": "Colombia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Inghilterra"
-  },
-  {
-    "g": 16,
-    "casa": "Galles",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Russia"
-  },
-  {
-    "g": 17,
-    "casa": "Belgio",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 17,
-    "casa": "Russia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Romania"
-  },
-  {
-    "g": 17,
-    "casa": "Sudafrica",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Bolivia"
-  },
-  {
-    "g": 17,
-    "casa": "Ecuador",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 17,
-    "casa": "Turchia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  },
-  {
-    "g": 17,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Rep. Ceca"
-  },
-  {
-    "g": 17,
-    "casa": "Inghilterra",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Cina"
-  },
-  {
-    "g": 17,
-    "casa": "Grecia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Galles"
-  },
-  {
-    "g": 17,
-    "casa": "Canada",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Norvegia"
-  },
-  {
-    "g": 17,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ungheria"
-  },
-  {
-    "g": 18,
-    "casa": "Romania",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 18,
-    "casa": "Inghilterra",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Grecia"
-  },
-  {
-    "g": 18,
-    "casa": "Bolivia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Cina"
-  },
-  {
-    "g": 18,
-    "casa": "Ungheria",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  },
-  {
-    "g": 18,
-    "casa": "Norvegia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "N.Zelanda"
-  },
-  {
-    "g": 18,
-    "casa": "Russia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 18,
-    "casa": "Canada",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Belgio"
-  },
-  {
-    "g": 18,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "India"
-  },
-  {
-    "g": 18,
-    "casa": "Turchia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Galles"
-  },
-  {
-    "g": 18,
-    "casa": "Ecuador",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Sudafrica"
-  },
-  {
-    "g": 19,
-    "casa": "Bolivia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Norvegia"
-  },
-  {
-    "g": 19,
-    "casa": "N.Zelanda",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Romania"
-  },
-  {
-    "g": 19,
-    "casa": "Rep. Ceca",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Colombia"
-  },
-  {
-    "g": 19,
-    "casa": "Galles",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ecuador"
-  },
-  {
-    "g": 19,
-    "casa": "India",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Messico"
-  },
-  {
-    "g": 19,
-    "casa": "Inghilterra",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Ungheria"
-  },
-  {
-    "g": 19,
-    "casa": "Cina",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Canada"
-  },
-  {
-    "g": 19,
-    "casa": "Grecia",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Turchia"
-  },
-  {
-    "g": 19,
-    "casa": "Sudafrica",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Russia"
-  },
-  {
-    "g": 19,
-    "casa": "Belgio",
-    "gc": "",
-    "gt": "",
-    "trasferta": "Peru"
-  }
+ {
+  "g": 1,
+  "casa": "Bolivia",
+  "gc": 2,
+  "gt": 0,
+  "trasferta": "Peru"
+ },
+ {
+  "g": 1,
+  "casa": "Ungheria",
+  "gc": 3,
+  "gt": 1,
+  "trasferta": "Galles"
+ },
+ {
+  "g": 1,
+  "casa": "Russia",
+  "gc": 1,
+  "gt": 0,
+  "trasferta": "Canada"
+ },
+ {
+  "g": 1,
+  "casa": "N.Zelanda",
+  "gc": 0,
+  "gt": 5,
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 1,
+  "casa": "Messico",
+  "gc": 0,
+  "gt": 3,
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 1,
+  "casa": "Norvegia",
+  "gc": 0,
+  "gt": 6,
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 1,
+  "casa": "India",
+  "gc": 2,
+  "gt": 4,
+  "trasferta": "Ecuador"
+ },
+ {
+  "g": 1,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Cina"
+ },
+ {
+  "g": 1,
+  "casa": "Romania",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 1,
+  "casa": "Sudafrica",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 2,
+  "casa": "Bolivia",
+  "gc": 2,
+  "gt": 3,
+  "trasferta": "Rep. Ceca"
+ },
+ {
+  "g": 2,
+  "casa": "Russia",
+  "gc": 2,
+  "gt": 3,
+  "trasferta": "Cina"
+ },
+ {
+  "g": 2,
+  "casa": "Norvegia",
+  "gc": 3,
+  "gt": 0,
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 2,
+  "casa": "Belgio",
+  "gc": 3,
+  "gt": 2,
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 2,
+  "casa": "Ungheria",
+  "gc": 0,
+  "gt": 1,
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 2,
+  "casa": "Ecuador",
+  "gc": 2,
+  "gt": 3,
+  "trasferta": "Canada"
+ },
+ {
+  "g": 2,
+  "casa": "India",
+  "gc": 2,
+  "gt": 0,
+  "trasferta": "Romania"
+ },
+ {
+  "g": 2,
+  "casa": "Colombia",
+  "gc": 5,
+  "gt": 0,
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 2,
+  "casa": "Galles",
+  "gc": 3,
+  "gt": 1,
+  "trasferta": "N.Zelanda"
+ },
+ {
+  "g": 2,
+  "casa": "Peru",
+  "gc": 0,
+  "gt": 2,
+  "trasferta": "Messico"
+ },
+ {
+  "g": 3,
+  "casa": "Russia",
+  "gc": 3,
+  "gt": 0,
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 3,
+  "casa": "Ecuador",
+  "gc": 2,
+  "gt": 0,
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 3,
+  "casa": "Sudafrica",
+  "gc": 3,
+  "gt": 0,
+  "trasferta": "Romania"
+ },
+ {
+  "g": 3,
+  "casa": "India",
+  "gc": 0,
+  "gt": "8",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 3,
+  "casa": "Grecia",
+  "gc": 1,
+  "gt": 0,
+  "trasferta": "Messico"
+ },
+ {
+  "g": 3,
+  "casa": "Rep. Ceca",
+  "gc": 3,
+  "gt": 0,
+  "trasferta": "Norvegia"
+ },
+ {
+  "g": 3,
+  "casa": "Galles",
+  "gc": 3,
+  "gt": 0,
+  "trasferta": "Canada"
+ },
+ {
+  "g": 3,
+  "casa": "Bolivia",
+  "gc": 4,
+  "gt": 2,
+  "trasferta": "N.Zelanda"
+ },
+ {
+  "g": 3,
+  "casa": "Ungheria",
+  "gc": 3,
+  "gt": 0,
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 3,
+  "casa": "Cina",
+  "gc": 2,
+  "gt": 0,
+  "trasferta": "Peru"
+ },
+ {
+  "g": 4,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 4,
+  "casa": "Grecia",
+  "gc": "4",
+  "gt": "0",
+  "trasferta": "Ecuador"
+ },
+ {
+  "g": 4,
+  "casa": "Norvegia",
+  "gc": "0",
+  "gt": "3",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 4,
+  "casa": "Rep. Ceca",
+  "gc": "0",
+  "gt": "3",
+  "trasferta": "Russia"
+ },
+ {
+  "g": 4,
+  "casa": "Turchia",
+  "gc": "1",
+  "gt": "4",
+  "trasferta": "Bolivia"
+ },
+ {
+  "g": 4,
+  "casa": "N.Zelanda",
+  "gc": "0",
+  "gt": "9",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 4,
+  "casa": "Ungheria",
+  "gc": "3",
+  "gt": "0",
+  "trasferta": "Cina"
+ },
+ {
+  "g": 4,
+  "casa": "Sudafrica",
+  "gc": "1",
+  "gt": "0",
+  "trasferta": "Peru"
+ },
+ {
+  "g": 4,
+  "casa": "Inghilterra",
+  "gc": "0",
+  "gt": "3",
+  "trasferta": "Galles"
+ },
+ {
+  "g": 4,
+  "casa": "Canada",
+  "gc": "0",
+  "gt": "3",
+  "trasferta": "Romania"
+ },
+ {
+  "g": 5,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 5,
+  "casa": "Belgio",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Russia"
+ },
+ {
+  "g": 5,
+  "casa": "Cina",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Norvegia"
+ },
+ {
+  "g": 5,
+  "casa": "Peru",
+  "gc": "0",
+  "gt": "2",
+  "trasferta": "India"
+ },
+ {
+  "g": 5,
+  "casa": "Romania",
+  "gc": "3",
+  "gt": "0",
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 5,
+  "casa": "Bolivia",
+  "gc": "1",
+  "gt": "4",
+  "trasferta": "Ungheria"
+ },
+ {
+  "g": 5,
+  "casa": "Sudafrica",
+  "gc": "3",
+  "gt": "0",
+  "trasferta": "Canada"
+ },
+ {
+  "g": 5,
+  "casa": "Ecuador",
+  "gc": "0",
+  "gt": "2",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 5,
+  "casa": "Messico",
+  "gc": "5",
+  "gt": "4",
+  "trasferta": "Galles"
+ },
+ {
+  "g": 5,
+  "casa": "Grecia",
+  "gc": "6",
+  "gt": "0",
+  "trasferta": "N.Zelanda"
+ },
+ {
+  "g": 6,
+  "casa": "Grecia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 6,
+  "casa": "Norvegia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 6,
+  "casa": "Ecuador",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ungheria"
+ },
+ {
+  "g": 6,
+  "casa": "Messico",
+  "gc": "",
+  "gt": "",
+  "trasferta": "N.Zelanda"
+ },
+ {
+  "g": 6,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 6,
+  "casa": "Romania",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Cina"
+ },
+ {
+  "g": 6,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Canada"
+ },
+ {
+  "g": 6,
+  "casa": "Russia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Peru"
+ },
+ {
+  "g": 6,
+  "casa": "Galles",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Bolivia"
+ },
+ {
+  "g": 6,
+  "casa": "Inghilterra",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 7,
+  "casa": "Ecuador",
+  "gc": "",
+  "gt": "",
+  "trasferta": "N.Zelanda"
+ },
+ {
+  "g": 7,
+  "casa": "Russia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 7,
+  "casa": "Galles",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Peru"
+ },
+ {
+  "g": 7,
+  "casa": "Norvegia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 7,
+  "casa": "Cina",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 7,
+  "casa": "Turchia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 7,
+  "casa": "Romania",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 7,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ungheria"
+ },
+ {
+  "g": 7,
+  "casa": "Bolivia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 7,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Canada"
+ },
+ {
+  "g": 8,
+  "casa": "Russia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "India"
+ },
+ {
+  "g": 8,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Norvegia"
+ },
+ {
+  "g": 8,
+  "casa": "Turchia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 8,
+  "casa": "Cina",
+  "gc": "",
+  "gt": "",
+  "trasferta": "N.Zelanda"
+ },
+ {
+  "g": 8,
+  "casa": "Peru",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ecuador"
+ },
+ {
+  "g": 8,
+  "casa": "Galles",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 8,
+  "casa": "Grecia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Rep. Ceca"
+ },
+ {
+  "g": 8,
+  "casa": "Inghilterra",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 8,
+  "casa": "Canada",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 8,
+  "casa": "Romania",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Bolivia"
+ },
+ {
+  "g": 9,
+  "casa": "Galles",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 9,
+  "casa": "N.Zelanda",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 9,
+  "casa": "Belgio",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 9,
+  "casa": "Peru",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Canada"
+ },
+ {
+  "g": 9,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Bolivia"
+ },
+ {
+  "g": 9,
+  "casa": "Inghilterra",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Rep. Ceca"
+ },
+ {
+  "g": 9,
+  "casa": "Romania",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 9,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Russia"
+ },
+ {
+  "g": 9,
+  "casa": "Turchia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Cina"
+ },
+ {
+  "g": 9,
+  "casa": "Norvegia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ecuador"
+ },
+ {
+  "g": 10,
+  "casa": "Russia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Bolivia"
+ },
+ {
+  "g": 10,
+  "casa": "N.Zelanda",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Peru"
+ },
+ {
+  "g": 10,
+  "casa": "Colombia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 10,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 10,
+  "casa": "Messico",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Romania"
+ },
+ {
+  "g": 10,
+  "casa": "Norvegia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Galles"
+ },
+ {
+  "g": 10,
+  "casa": "Canada",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 10,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Cina"
+ },
+ {
+  "g": 10,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ecuador"
+ },
+ {
+  "g": 10,
+  "casa": "Belgio",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 11,
+  "casa": "Colombia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Cina"
+ },
+ {
+  "g": 11,
+  "casa": "Galles",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 11,
+  "casa": "Inghilterra",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Russia"
+ },
+ {
+  "g": 11,
+  "casa": "Peru",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Rep. Ceca"
+ },
+ {
+  "g": 11,
+  "casa": "N.Zelanda",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 11,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 11,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Norvegia"
+ },
+ {
+  "g": 11,
+  "casa": "Bolivia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 11,
+  "casa": "Canada",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 11,
+  "casa": "Ecuador",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Romania"
+ },
+ {
+  "g": 12,
+  "casa": "Turchia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 12,
+  "casa": "Ecuador",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 12,
+  "casa": "Cina",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 12,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "N.Zelanda"
+ },
+ {
+  "g": 12,
+  "casa": "Romania",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Peru"
+ },
+ {
+  "g": 12,
+  "casa": "Colombia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Bolivia"
+ },
+ {
+  "g": 12,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 12,
+  "casa": "Canada",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 12,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Galles"
+ },
+ {
+  "g": 12,
+  "casa": "Russia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Norvegia"
+ },
+ {
+  "g": 13,
+  "casa": "Colombia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 13,
+  "casa": "Messico",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Bolivia"
+ },
+ {
+  "g": 13,
+  "casa": "N.Zelanda",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Russia"
+ },
+ {
+  "g": 13,
+  "casa": "Galles",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Romania"
+ },
+ {
+  "g": 13,
+  "casa": "Inghilterra",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Peru"
+ },
+ {
+  "g": 13,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 13,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 13,
+  "casa": "Norvegia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 13,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Canada"
+ },
+ {
+  "g": 13,
+  "casa": "Ecuador",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Cina"
+ },
+ {
+  "g": 14,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 14,
+  "casa": "N.Zelanda",
+  "gc": "",
+  "gt": "",
+  "trasferta": "India"
+ },
+ {
+  "g": 14,
+  "casa": "Russia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 14,
+  "casa": "Romania",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Rep. Ceca"
+ },
+ {
+  "g": 14,
+  "casa": "Bolivia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ecuador"
+ },
+ {
+  "g": 14,
+  "casa": "Colombia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Peru"
+ },
+ {
+  "g": 14,
+  "casa": "Cina",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Galles"
+ },
+ {
+  "g": 14,
+  "casa": "Norvegia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 14,
+  "casa": "Turchia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Canada"
+ },
+ {
+  "g": 14,
+  "casa": "Belgio",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 15,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Galles"
+ },
+ {
+  "g": 15,
+  "casa": "Bolivia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Canada"
+ },
+ {
+  "g": 15,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 15,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 15,
+  "casa": "Russia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ecuador"
+ },
+ {
+  "g": 15,
+  "casa": "N.Zelanda",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 15,
+  "casa": "Sudafrica",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 15,
+  "casa": "Cina",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 15,
+  "casa": "Peru",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 15,
+  "casa": "Norvegia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Romania"
+ },
+ {
+  "g": 16,
+  "casa": "Turchia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ecuador"
+ },
+ {
+  "g": 16,
+  "casa": "Belgio",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Bolivia"
+ },
+ {
+  "g": 16,
+  "casa": "Sudafrica",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Rep. Ceca"
+ },
+ {
+  "g": 16,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Romania"
+ },
+ {
+  "g": 16,
+  "casa": "N.Zelanda",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Canada"
+ },
+ {
+  "g": 16,
+  "casa": "Grecia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "India"
+ },
+ {
+  "g": 16,
+  "casa": "Peru",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Norvegia"
+ },
+ {
+  "g": 16,
+  "casa": "Cina",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 16,
+  "casa": "Colombia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Inghilterra"
+ },
+ {
+  "g": 16,
+  "casa": "Galles",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Russia"
+ },
+ {
+  "g": 17,
+  "casa": "Belgio",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 17,
+  "casa": "Russia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Romania"
+ },
+ {
+  "g": 17,
+  "casa": "Sudafrica",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Bolivia"
+ },
+ {
+  "g": 17,
+  "casa": "Ecuador",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 17,
+  "casa": "Turchia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Peru"
+ },
+ {
+  "g": 17,
+  "casa": "N.Zelanda",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Rep. Ceca"
+ },
+ {
+  "g": 17,
+  "casa": "Inghilterra",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Cina"
+ },
+ {
+  "g": 17,
+  "casa": "Grecia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Galles"
+ },
+ {
+  "g": 17,
+  "casa": "Canada",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Norvegia"
+ },
+ {
+  "g": 17,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ungheria"
+ },
+ {
+  "g": 18,
+  "casa": "Romania",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 18,
+  "casa": "Inghilterra",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Grecia"
+ },
+ {
+  "g": 18,
+  "casa": "Bolivia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Cina"
+ },
+ {
+  "g": 18,
+  "casa": "Ungheria",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Peru"
+ },
+ {
+  "g": 18,
+  "casa": "Norvegia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "N.Zelanda"
+ },
+ {
+  "g": 18,
+  "casa": "Russia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 18,
+  "casa": "Canada",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Belgio"
+ },
+ {
+  "g": 18,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "India"
+ },
+ {
+  "g": 18,
+  "casa": "Turchia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Galles"
+ },
+ {
+  "g": 18,
+  "casa": "Ecuador",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Sudafrica"
+ },
+ {
+  "g": 19,
+  "casa": "Bolivia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Norvegia"
+ },
+ {
+  "g": 19,
+  "casa": "N.Zelanda",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Romania"
+ },
+ {
+  "g": 19,
+  "casa": "Rep. Ceca",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Colombia"
+ },
+ {
+  "g": 19,
+  "casa": "Galles",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ecuador"
+ },
+ {
+  "g": 19,
+  "casa": "India",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Messico"
+ },
+ {
+  "g": 19,
+  "casa": "Inghilterra",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Ungheria"
+ },
+ {
+  "g": 19,
+  "casa": "Cina",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Canada"
+ },
+ {
+  "g": 19,
+  "casa": "Grecia",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Turchia"
+ },
+ {
+  "g": 19,
+  "casa": "Sudafrica",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Russia"
+ },
+ {
+  "g": 19,
+  "casa": "Belgio",
+  "gc": "",
+  "gt": "",
+  "trasferta": "Peru"
+ }
 ];
-let CALENDARIO = JSON.parse(localStorage.getItem('fifa20_cal_v2')||'null') || CALENDARIO_INIT;
-let tabAdmin = 'classifica';
-
-// ---- CORE LOGICA ----
-function isEmptyVal(v){return v===''||v==null||v===undefined||String(v).trim()==='';}
-function parseEff(m){
-  const sGc=String(m.gc??'').trim(); const sGt=String(m.gt??'').trim();
-  if(isEmptyVal(m.gc)&&isEmptyVal(m.gt)) return {played:false,status:'da giocare',gcEff:null,gtEff:null,double:false};
-  if(sGc==='_'&&sGt==='_') return {played:true,status:'tavolino',gcEff:0,gtEff:0,double:true};
-  if(sGc==='_') return {played:true,status:'tavolino',gcEff:0,gtEff:3,double:false};
-  if(sGt==='_') return {played:true,status:'tavolino',gcEff:3,gtEff:0,double:false};
-  const ngc=parseInt(sGc,10); const ngt=parseInt(sGt,10);
-  if(isNaN(ngc)||isNaN(ngt)) return {played:false,status:'da giocare',gcEff:null,gtEff:null,double:false};
-  return {played:true,status:'giocata',gcEff:ngc,gtEff:ngt,double:false};
-}
-function calcolaClassifica(){
-  const stats={}; SQUADRE.forEach(s=>stats[s]={squadra:s,Pt:0,G:0,V:0,N:0,P:0,GF:0,GS:0,DR:0});
-  CALENDARIO.forEach(m=>{
-    const eff=parseEff(m); if(!eff.played||eff.gcEff===null||eff.gtEff===null) return;
-    const h=stats[m.casa]; const a=stats[m.trasferta]; if(!h||!a) return;
-    h.G++; a.G++; h.GF+=eff.gcEff; h.GS+=eff.gtEff; a.GF+=eff.gtEff; a.GS+=eff.gcEff;
-    if(eff.double){h.P++; a.P++;} else if(eff.gcEff>eff.gtEff){h.V++; h.Pt+=3; a.P++;} else if(eff.gcEff<eff.gtEff){a.V++; a.Pt+=3; h.P++;} else {h.N++; a.N++; h.Pt++; a.Pt++;}
-  });
-  Object.values(stats).forEach(s=>s.DR=s.GF-s.GS);
-  return Object.values(stats).sort((a,b)=>b.Pt-a.Pt||b.DR-a.DR||b.GF-a.GF||a.squadra.localeCompare(b.squadra));
-}
-function isAdminMode(){
-  const q=window.location.search.toLowerCase();
-  const h=window.location.hash.toLowerCase();
-  return q.includes('bettoline') || h.includes('admin');
-}
-let isAdmin=isAdminMode();
-
+let CALENDARIO=JSON.parse(JSON.stringify(CALENDARIO_INIT));
+try{const s=localStorage.getItem('fifa20_cal_v2');if(s)CALENDARIO=JSON.parse(s);}catch(e){}
+let isAdmin=location.search.toLowerCase().includes('bettoline')||location.hash.toLowerCase().includes('admin');
+let tabAdmin='classifica';
+function calc(){const s={};SQUADRE.forEach(t=>s[t]={squadra:t,Pt:0,G:0,V:0,N:0,P:0,GF:0,GS:0,DR:0});
+CALENDARIO.forEach(m=>{const gc=m.gc,gt=m.gt;if(gc===""||gt===""||gc==null||gt==null)return;const h=s[m.casa],a=s[m.trasferta];if(!h||!a)return;let hg,ag;
+if(gc==="_"&&gt==="_"){h.G++;a.G++;h.GS+=3;a.GS+=3;h.P++;a.P++;return;}
+if(gc==="_"){hg=0;ag=3;}else if(gt==="_"){hg=3;ag=0;}else{hg=parseInt(gc,10);ag=parseInt(gt,10);}
+h.G++;a.G++;h.GF+=hg;h.GS+=ag;a.GF+=ag;a.GS+=hg;if(hg>ag){h.V++;h.Pt+=3;a.P++;}else if(hg<ag){a.V++;a.Pt+=3;h.P++;}else{h.N++;a.N++;h.Pt++;a.Pt++;}});
+Object.values(s).forEach(x=>x.DR=x.GF-x.GS);return Object.values(s).sort((a,b)=>b.Pt-a.Pt||b.DR-a.DR||b.GF-a.GF);}
+function badge(m){if(m.gc===""||m.gt===""||m.gc==null||m.gt==null)return '<span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span>';if(m.gc==="_"||m.gt==="_")return '<span class="px-2 py-1 rounded-md bg-amber-500/15 text-amber-300 text-[10px] font-bold">Tavolino</span>';return '<span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span>';}
+function classificaHTML(){const cl=calc();
+return `<div class="bg-[#121a29] border border-white/10 rounded-2xl overflow-hidden shadow-2xl"><div class="flex justify-between items-center px-5 py-4 border-b border-white/10"><h2 class="font-bold tracking-wide text-[15px]">CLASSIFICA LIVE</h2><span class="mono text-[11px] text-white/40">Pt &nbsp;•&nbsp; DR &nbsp;•&nbsp; GF</span></div>
+<table class="w-full text-[13px]"><thead><tr class="text-white/40 text-left text-[11px]"><th class="py-3 px-5 font-medium">#</th><th class="font-medium">SQUADRA</th><th class="font-medium">Pt</th><th class="font-medium">G</th><th class="font-medium">V</th><th class="font-medium">N</th><th class="font-medium">P</th><th class="font-medium">GF</th><th class="font-medium">GS</th><th class="font-medium">DR</th></tr></thead><tbody>`+
+cl.map((x,i)=>`<tr class="border-t border-white/5 ${i===0?'bg-white/[0.03]':''}"><td class="py-[11px] px-5 text-white/50">${i+1}</td><td class="font-bold">${x.squadra}</td><td class="font-bold">${x.Pt}</td><td class="text-white/70">${x.G}</td><td class="text-white/70">${x.V}</td><td class="text-white/70">${x.N}</td><td class="text-white/70">${x.P}</td><td class="font-bold">${x.GF}</td><td class="text-white/70">${x.GS}</td><td class="font-bold ${x.DR>0?'text-[#22ff88]':x.DR<0?'text-red-400':'text-white/70'}">${x.DR>0?'+'+x.DR:x.DR}</td></tr>`).join('')+`</tbody></table></div>`;}
+function calendarioHTML(editable){let out=`<div class="bg-[#121a29] border border-white/10 rounded-2xl overflow-hidden shadow-2xl"><div class="flex justify-between items-center px-5 py-4 border-b border-white/10"><h2 class="font-bold tracking-wide text-[15px]">CALENDARIO</h2><div class="flex gap-1.5"><span class="px-2 py-1 rounded-md bg-[#22ff88]/15 text-[#22ff88] text-[10px] font-bold">Giocata</span><span class="px-2 py-1 rounded-md bg-amber-500/15 text-amber-300 text-[10px] font-bold">Tavolino</span><span class="px-2 py-1 rounded-md bg-white/5 text-white/40 text-[10px] font-bold">Da giocare</span></div></div><div class="cal-scroll p-4 ${editable?'':'max-h-[820px] overflow-y-auto'}">`;
+let cur=0;
+CALENDARIO.forEach((m,i)=>{if(m.g!==cur){cur=m.g;const n=CALENDARIO.filter(x=>x.g===cur).length;out+=`<div class="flex justify-between items-center mt-2 mb-2 first:mt-0"><h3 class="font-bold tracking-wide text-[13px] text-white/80">GIORNATA ${cur}</h3><span class="mono text-[11px] text-white/40">${n} match</span></div>`;}
+const gc=m.gc??"",gt=m.gt??"";
+if(editable){out+=`<div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1 text-right font-medium">${m.casa}</span><input data-i="${i}" data-f="gc" value="${gc}"><span class="text-white/30">-</span><input data-i="${i}" data-f="gt" value="${gt}"><span class="flex-1 font-medium">${m.trasferta}</span>${badge(m)}</div>`;}
+else{const score=(gc===""||gt==="")?'<span class="text-white/30 font-bold">- &nbsp;:&nbsp; -</span>':`<span class="font-bold text-[15px]">${gc} &nbsp;:&nbsp; ${gt}</span>`;out+=`<div class="flex items-center gap-2 py-2.5 border-b border-white/5 text-[13px]"><span class="flex-1"><b class="font-bold">${m.casa}</b> <span class="text-white/30 mx-1">•</span> <span class="text-white/70">${m.trasferta}</span></span>${score} ${badge(m)}</div>`;}});
+out+=`</div></div>`;return out;}
 function save(){localStorage.setItem('fifa20_cal_v2',JSON.stringify(CALENDARIO));}
-
-function render(){
-  if(isAdmin) renderAdmin(); else renderView();
-}
-
-function renderView(){
-  const classifica=calcolaClassifica();
-  const groups={}; CALENDARIO.forEach(m=>{if(!groups[m.g]) groups[m.g]=[]; groups[m.g].push(m);});
-  const giornate=Object.keys(groups).map(Number).sort((a,b)=>a-b);
-  const app=document.getElementById('app');
-  app.innerHTML=`
-  <div class="max-w-[1180px] mx-auto px-4 md:px-6 py-6">
-    <header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-      <div>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#22ff88] to-[#00d2ff] grid place-items-center font-bold text-black">20</div>
-          <h1 class="text-[28px] md:text-[36px] font-bold tracking-tight leading-none">FIFA 20 <span class="text-white/40 font-medium">BETTOLINE</span></h1>
-          <span class="ml-2 px-2.5 py-1 rounded-full bg-[#22ff88]/15 text-[#22ff88] text-[11px] font-bold tracking-widest mono border border-[#22ff88]/20 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#22ff88] animate-pulse inline-block"></span> LIVE</span>
-        </div>
-        <p class="mt-2 text-[13px] text-white/50 max-w-[520px]">Classifica live calcolata da Excel • forfait "_" = 0-3 • doppio "_" = 0-0 / 3-3 con 0 pt. Giornate ${giornate.length} • Squadre ${SQUADRE.length}</p>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="text-[11px] text-white/30 mono">VIEW MODE</span>
-        <div class="w-px h-4 bg-white/10"></div>
-        <span class="text-[11px] text-white/60">${new Date().toLocaleDateString('it-IT')}</span>
-      </div>
-    </header>
-
-    <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-5">
-      <section class="rounded-[18px] bg-[#121a29] border border-white/[0.07] overflow-hidden">
-        <div class="px-5 py-4 flex items-center justify-between border-b border-white/[0.06]">
-          <h2 class="font-bold tracking-wide text-[13px]">CLASSIFICA LIVE</h2>
-          <span class="text-[11px] mono text-white/40">Pt • DR • GF</span>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-[13px]">
-            <thead class="text-[11px] text-white/30 mono sticky top-0 bg-[#121a29]"><tr><th class="text-left font-medium py-2.5 px-3">#</th><th class="text-left font-medium">SQUADRA</th><th class="text-center font-medium">Pt</th><th class="text-center font-medium">G</th><th class="text-center font-medium">V</th><th class="text-center font-medium">N</th><th class="text-center font-medium">P</th><th class="text-center font-medium">GF</th><th class="text-center font-medium">GS</th><th class="text-center font-medium pr-4">DR</th></tr></thead>
-            <tbody class="divide-y divide-white/[0.04]">
-              ${classifica.map((s,i)=>`<tr class="${i<4?'bg-[#22ff88]/[0.03]':''} hover:bg-white/[0.02] transition"><td class="py-[9px] px-3 mono text-white/40">${i+1}</td><td class="font-medium">${s.squadra}</td><td class="text-center font-bold">${s.Pt}</td><td class="text-center mono text-white/60">${s.G}</td><td class="text-center mono">${s.V}</td><td class="text-center mono">${s.N}</td><td class="text-center mono">${s.P}</td><td class="text-center mono">${s.GF}</td><td class="text-center mono text-white/60">${s.GS}</td><td class="text-center mono pr-4 ${s.DR>0?'text-[#22ff88]':s.DR<0?'text-[#ff5a5a]':''}">${s.DR>0?'+':''}${s.DR}</td></tr>`).join('')}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="rounded-[18px] bg-[#121a29] border border-white/[0.07] overflow-hidden">
-        <div class="px-5 py-4 border-b border-white/[0.06] flex items-center justify-between">
-          <h2 class="font-bold tracking-wide text-[13px]">CALENDARIO</h2>
-          <div class="flex gap-1.5"><span class="px-2 py-0.5 rounded-full text-[10px] bg-[#22ff88]/15 text-[#22ff88]">Giocata</span><span class="px-2 py-0.5 rounded-full text-[10px] bg-amber-400/15 text-amber-300">Tavolino</span><span class="px-2 py-0.5 rounded-full text-[10px] bg-white/10 text-white/50">Da giocare</span></div>
-        </div>
-        <div class="max-h-[720px] overflow-auto divide-y divide-white/[0.04]">
-          ${giornate.map(g=>`
-            <div class="px-4 py-3 bg-white/[0.02] sticky top-0 backdrop-blur flex justify-between"><span class="text-[11px] mono font-bold tracking-widest">GIORNATA ${g}</span><span class="text-[11px] mono text-white/40">${groups[g].length} match</span></div>
-            <div class="p-2 space-y-1.5">
-              ${groups[g].map(m=>{
-                const eff=parseEff(m);
-                const badge = eff.status==='giocata' ? '<span class="text-[10px] px-1.5 py-0.5 rounded bg-[#22ff88]/15 text-[#22ff88]">Giocata</span>' : eff.status==='tavolino' ? '<span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-400/15 text-amber-300">Tavolino</span>' : '<span class="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-white/40">Da giocare</span>';
-                const score = !eff.played ? '<span class="mono text-white/20">- : -</span>' : `<span class="mono font-bold ${eff.double?'text-amber-300':''}">${eff.gcEff} : ${eff.gtEff}</span>`;
-                return `<div class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-[#0e1523] border border-white/[0.04]"><div class="flex items-center gap-2 min-w-0"><span class="text-[13px] font-medium truncate max-w-[90px] md:max-w-[120px]">${m.casa}</span><span class="text-white/20">•</span><span class="text-[13px] font-medium truncate max-w-[90px] md:max-w-[120px] text-white/70">${m.trasferta}</span></div><div class="flex items-center gap-2">${score} ${badge}</div></div>`;
-              }).join('')}
-            </div>
-          `).join('')}
-        </div>
-      </section>
-    </div>
-
-    <footer class="mt-8 flex items-center justify-between text-[11px] text-white/30 mono border-t border-white/[0.06] pt-4">
-      <span>FIFA20 • Bettoline • View-only • GitHub Pages ready</span>
-      <button onclick="apriAdmin()" class="px-3 py-1.5 rounded-full bg-white text-black font-bold hover:bg-white/90 transition">Area Admin</button>
-    </footer>
-  </div>`;
-}
-
-function renderAdmin(){
-  const classifica=calcolaClassifica();
-  const groups={}; CALENDARIO.forEach((m,i)=>{if(!groups[m.g]) groups[m.g]=[]; groups[m.g].push({...m,_idx:i});});
-  const giornate=Object.keys(groups).map(Number).sort((a,b)=>a-b);
-  const app=document.getElementById('app');
-  app.innerHTML=`
-  <div class="max-w-[1280px] mx-auto px-4 md:px-6 py-6">
-    <header class="flex flex-wrap items-center justify-between gap-3 mb-6">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#22ff88] to-[#ff3b9a] grid place-items-center font-bold text-black">A</div>
-        <h1 class="text-[24px] md:text-[30px] font-bold">ADMIN • FIFA20</h1>
-        <span class="px-2.5 py-1 rounded-full bg-[#ff3b9a]/15 text-[#ff3b9a] text-[11px] font-bold tracking-widest mono border border-[#ff3b9a]/20">EDIT MODE</span>
-      </div>
-      <div class="flex flex-wrap items-center gap-2">
-        <input type="file" id="excelInput" accept=".xlsx,.xls" class="hidden"/>
-        <button onclick="document.getElementById('excelInput').click()" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-[12px] font-medium transition">Upload Excel</button>
-        <button onclick="esportaExcel()" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-[12px] font-medium transition">Esporta Excel</button>
-        <button onclick="salvaPubblica()" class="px-4 py-2 rounded-xl bg-[#22ff88] text-black font-bold text-[12px] hover:bg-[#22ff88]/90 transition">Salva e Pubblica ↓</button>
-        <button onclick="resetAll()" class="px-3 py-2 rounded-xl bg-[#ff5a5a]/15 text-[#ff5a5a] text-[12px] font-medium border border-[#ff5a5a]/20">Reset</button>
-        <button onclick="esciAdmin()" class="px-3 py-2 rounded-xl bg-white text-black font-bold text-[12px]">Esci → View</button>
-      </div>
-    </header>
-
-    <div class="flex gap-2 mb-5">
-      <button onclick="tabAdmin='classifica';renderAdmin()" class="px-4 py-2 rounded-full text-[12px] font-bold ${tabAdmin==='classifica'?'bg-white text-black':'bg-white/10 text-white/60'}">CLASSIFICA</button>
-      <button onclick="tabAdmin='calendario';renderAdmin()" class="px-4 py-2 rounded-full text-[12px] font-bold ${tabAdmin==='calendario'?'bg-white text-black':'bg-white/10 text-white/60'}">CALENDARIO EDITABILE</button>
-      <span class="ml-auto text-[11px] mono text-white/30 self-center">${CALENDARIO.filter(m=>{const e=parseEff(m);return e.played;}).length} giocate / ${CALENDARIO.length} totali • localStorage attivo</span>
-    </div>
-
-    ${tabAdmin==='classifica' ? `
-      <section class="rounded-[18px] bg-[#121a29] border border-white/[0.07] overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full text-[13px]">
-            <thead class="text-[11px] text-white/30 mono bg-[#121a29]"><tr><th class="text-left py-2.5 px-3">#</th><th class="text-left">SQUADRA</th><th class="text-center">Pt</th><th class="text-center">G</th><th class="text-center">V</th><th class="text-center">N</th><th class="text-center">P</th><th class="text-center">GF</th><th class="text-center">GS</th><th class="text-center pr-4">DR</th></tr></thead>
-            <tbody class="divide-y divide-white/[0.04]">
-              ${classifica.map((s,i)=>`<tr class="hover:bg-white/[0.02]"><td class="py-2 px-3 mono text-white/40">${i+1}</td><td class="font-medium">${s.squadra}</td><td class="text-center font-bold">${s.Pt}</td><td class="text-center mono">${s.G}</td><td class="text-center mono">${s.V}</td><td class="text-center mono">${s.N}</td><td class="text-center mono">${s.P}</td><td class="text-center mono">${s.GF}</td><td class="text-center mono">${s.GS}</td><td class="text-center mono pr-4">${s.DR}</td></tr>`).join('')}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    ` : `
-      <div class="space-y-6">
-        ${giornate.map(g=>`
-          <section class="rounded-[18px] bg-[#121a29] border border-white/[0.07] overflow-hidden">
-            <div class="px-5 py-3 flex justify-between items-center bg-white/[0.02]"><span class="text-[12px] mono font-bold tracking-widest">GIORNATA ${g}</span><span class="text-[11px] mono text-white/40">${groups[g].length} match</span></div>
-            <div class="divide-y divide-white/[0.04]">
-              ${groups[g].map(m=>{
-                const eff=parseEff(m);
-                return `<div class="flex flex-col md:flex-row md:items-center justify-between gap-2 px-4 py-3 hover:bg-white/[0.02]">
-                  <div class="flex items-center gap-2 flex-1">
-                    <span class="w-[110px] text-[13px] font-medium truncate">${m.casa}</span>
-                    <input data-idx="${m._idx}" data-field="gc" value="${m.gc}" placeholder="-" class="w-[56px] px-2 py-1.5 rounded-lg bg-[#0e1523] border border-white/10 mono text-center text-[13px] focus:outline-none focus:border-[#22ff88]/50" />
-                    <span class="text-white/20">:</span>
-                    <input data-idx="${m._idx}" data-field="gt" value="${m.gt}" placeholder="-" class="w-[56px] px-2 py-1.5 rounded-lg bg-[#0e1523] border border-white/10 mono text-center text-[13px] focus:outline-none focus:border-[#22ff88]/50" />
-                    <span class="w-[110px] text-[13px] font-medium truncate text-white/70">${m.trasferta}</span>
-                  </div>
-                  <div class="flex items-center gap-2"><span class="text-[11px] px-2 py-0.5 rounded-full ${eff.status==='giocata'?'bg-[#22ff88]/15 text-[#22ff88]':eff.status==='tavolino'?'bg-amber-400/15 text-amber-300':'bg-white/10 text-white/40'}">${eff.status}</span><span class="text-[11px] mono text-white/30">idx ${m._idx}</span></div>
-                </div>`;
-              }).join('')}
-            </div>
-          </section>
-        `).join('')}
-      </div>
-    `}
-  </div>`;
-
-  // listeners
-  document.querySelectorAll('input[data-idx]').forEach(inp=>{
-    inp.addEventListener('change', (e)=>{
-      const idx=parseInt(e.target.getAttribute('data-idx'),10);
-      const field=e.target.getAttribute('data-field');
-      let val=e.target.value.trim();
-      // allow "_" or empty or number
-      if(val!=='_' && val!=='' && isNaN(parseInt(val,10))){ e.target.value=CALENDARIO[idx][field]; return; }
-      CALENDARIO[idx][field]=val===''?'':val;
-      save();
-      renderAdmin();
-    });
-  });
-  const excelInput=document.getElementById('excelInput');
-  if(excelInput){
-    excelInput.addEventListener('change', async (e)=>{
-      const file=e.target.files[0]; if(!file) return;
-      if(typeof XLSX==='undefined'){ alert('SheetJS non caricato'); return; }
-      const data=await file.arrayBuffer();
-      const wb=XLSX.read(data); const ws=wb.Sheets[wb.SheetNames[0]];
-      const rows=XLSX.utils.sheet_to_json(ws, {header:1});
-      // try parse: expect columns Giornata,Casa,GC,GT,Trasferta
-      // skip header
-      let imported=0;
-      for(let i=1;i<rows.length;i++){
-        const r=rows[i]; if(!r||r.length<5) continue;
-        const g=parseInt(r[0],10); const casa=String(r[1]||'').trim(); const gc=r[2]; const gt=r[3]; const tras=String(r[4]||'').trim();
-        if(!g||!casa||!tras) continue;
-        const idx=CALENDARIO.findIndex(m=>m.g===g && m.casa===casa && m.trasferta===tras);
-        if(idx>=0){ CALENDARIO[idx].gc= gc==null?'':String(gc); CALENDARIO[idx].gt= gt==null?'':String(gt); imported++; }
-      }
-      save(); renderAdmin(); alert('Importate '+imported+' partite');
-    });
-  }
-}
-
-function apriAdmin(){
-  const pwd=prompt('Password Area Admin:'); if(pwd && pwd.toLowerCase()==='bettoline'){ isAdmin=true; location.hash='admin'; render(); } else if(pwd!==null){ alert('Password errata'); }
-}
-function esciAdmin(){ isAdmin=false; history.replaceState(null,'',location.pathname); render(); }
-function resetAll(){ if(confirm('Reset calendario da file originale?')){ localStorage.removeItem('fifa20_cal_v2'); CALENDARIO=JSON.parse(JSON.stringify(CALENDARIO_INIT)); save(); renderAdmin(); } }
-
+function render(){const played=CALENDARIO.filter(m=>m.gc!==""&&m.gt!==""&&m.gc!=null&&m.gt!=null).length;
+document.getElementById('app').innerHTML=`<div style="max-width:1280px;margin:auto;padding:20px 16px 40px">
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+<div><div class="flex items-center gap-3 flex-wrap"><h1 class="text-[30px] md:text-[36px] font-bold leading-none tracking-tight">FIFA 20 <span class="text-white/40">BETTOLINE</span></h1><span class="px-2.5 py-1 rounded-full bg-[#22ff88]/15 text-[#22ff88] text-[11px] font-bold tracking-widest mono border border-[#22ff88]/20">● LIVE</span>${isAdmin?'<span class="px-2.5 py-1 rounded-full bg-[#ff3b9a]/15 text-[#ff3b9a] text-[11px] font-bold tracking-widest mono border border-[#ff3b9a]/20">ADMIN MODE</span>':''}</div>
+<p class="mt-2 text-[13px] text-white/50 max-w-[640px]">Fix critico: admin si attiva con <span class="mono bg-white/10 px-1 rounded text-white/80">?admin=bettoline</span> o <span class="mono bg-white/10 px-1 rounded text-white/80">#admin</span> o bottone password. Logica tavolino "_" = 0-3, doppio "_" = 0-0 (GS 3-3, 0 pt). Tailwind CDN + vanilla JS puro.</p></div>
+${isAdmin?'<div class="flex gap-2 shrink-0"><button onclick="resetAll()" class="px-3 py-2 rounded-full bg-red-500/20 text-red-300 text-[12px] font-bold">Reset</button><button onclick="salvaPubblica()" class="px-4 py-2 rounded-xl bg-[#22ff88] text-black font-bold text-[12px]">Salva e Pubblica ↓</button><button onclick="esciAdmin()" class="px-3 py-2 rounded-full bg-white text-black font-bold text-[12px]">Esci → View</button></div>':'<button onclick="apriAdmin()" class="px-4 py-2 rounded-full bg-white text-black font-bold text-[12px] shrink-0">Area Admin</button>'}
+</header>
+${isAdmin?`<div class="flex flex-wrap items-center gap-2 mb-5"><button onclick="tabAdmin='classifica';render()" class="px-4 py-2 rounded-full text-[12px] font-bold ${tabAdmin==='classifica'?'bg-white text-black':'bg-white/10 text-white/60'}">CLASSIFICA</button><button onclick="tabAdmin='calendario';render()" class="px-4 py-2 rounded-full text-[12px] font-bold ${tabAdmin==='calendario'?'bg-white text-black':'bg-white/10 text-white/60'}">CALENDARIO EDITABILE</button><span class="ml-auto mono text-[11px] text-white/40">${played} giocate / 190 totali • localStorage attivo</span></div>`:''}
+${isAdmin ? (tabAdmin==='classifica' ? `<div class="grid lg:grid-cols-2 gap-5 items-start">${classificaHTML()}${calendarioHTML(false)}</div>` : `<div class="grid lg:grid-cols-2 gap-5 items-start">${classificaHTML()}${calendarioHTML(true)}</div><p class="text-white/50 text-[12px] mt-3">Modifica a destra, la classifica a sinistra si aggiorna da sola. Poi premi <b class="text-[#22ff88]">Salva e Pubblica ↓</b> in alto.</p>`) : `<div class="grid lg:grid-cols-2 gap-5 items-start">${classificaHTML()}${calendarioHTML(false)}</div>`}
+</div>`;
+document.querySelectorAll('input[data-i]').forEach(inp=>{inp.addEventListener('change',e=>{const i=+e.target.dataset.i;CALENDARIO[i][e.target.dataset.f]=e.target.value.trim();save();render();});});}
+function apriAdmin(){const pwd=prompt('Password Area Admin:');if(pwd&&pwd.toLowerCase()==='bettoline'){isAdmin=true;location.hash='';render();}else if(pwd!==null){alert('Password errata');}}
+function esciAdmin(){isAdmin=false;history.replaceState(null,'',location.pathname);render();}
+function resetAll(){if(confirm('Reset calendario originale?')){localStorage.removeItem('fifa20_cal_v2');CALENDARIO=JSON.parse(JSON.stringify(CALENDARIO_INIT));save();render();}}
 function salvaPubblica(){
-  // genera view-only HTML con calendario attuale iniettato
-  const viewOnly = generaViewOnlyHTML();
-  const blob=new Blob([viewOnly],{type:'text/html'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a'); a.href=url; a.download='index.html'; a.click(); setTimeout(()=>URL.revokeObjectURL(url),2000);
+  // Scarica ESATTAMENTE questo stesso file, con solo CALENDARIO_INIT aggiornato alle modifiche. Niente VIEW-ONLY, niente versione brutta.
+  const calStr=JSON.stringify(CALENDARIO,null,1);
+  let html=document.documentElement.outerHTML;
+  html=html.replace(/const CALENDARIO_INIT = \[.*?\];/s,'const CALENDARIO_INIT = '+calStr+';');
+  // Pulisce l'hash #admin / ?admin=bettoline dal file scaricato, così chi lo apre vede la vista pubblica ma può ancora entrare in admin
+  html=html.replace(/location\.hash='admin'/g,"location.hash=''");
+  const blob=new Blob(['<!DOCTYPE html>'+html],{type:'text/html'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='index.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
 }
-
-function generaViewOnlyHTML(){
-  const calStr=JSON.stringify(CALENDARIO, null, 2);
-  const sqStr=JSON.stringify(SQUADRE);
-  return `<!DOCTYPE html>
-<html lang="it"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>FIFA 20 Bettoline</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet"><style>body{font-family:'Space Grotesk',system-ui;background:#090d14;color:#e6f0ff}</style></head><body><div id="app"></div><script>
-const SQUADRE=${sqStr}; const CALENDARIO=${calStr};
-function isEmptyVal(v){return v===''||v==null||String(v).trim()==='';}
-function parseEff(m){const sGc=String(m.gc??'').trim();const sGt=String(m.gt??'').trim();if(isEmptyVal(m.gc)&&isEmptyVal(m.gt))return{played:false,status:'da giocare',gcEff:null,gtEff:null,double:false};if(sGc==='_'&&sGt==='_')return{played:true,status:'tavolino',gcEff:0,gtEff:0,double:true};if(sGc==='_')return{played:true,status:'tavolino',gcEff:0,gtEff:3,double:false};if(sGt==='_')return{played:true,status:'tavolino',gcEff:3,gtEff:0,double:false};const ngc=parseInt(sGc,10);const ngt=parseInt(sGt,10);if(isNaN(ngc)||isNaN(ngt))return{played:false,status:'da giocare',gcEff:null,gtEff:null,double:false};return{played:true,status:'giocata',gcEff:ngc,gtEff:ngt,double:false};}
-function calcolaClassifica(){const stats={};SQUADRE.forEach(s=>stats[s]={squadra:s,Pt:0,G:0,V:0,N:0,P:0,GF:0,GS:0,DR:0});CALENDARIO.forEach(m=>{const eff=parseEff(m);if(!eff.played||eff.gcEff===null)return;const h=stats[m.casa];const a=stats[m.trasferta];if(!h||!a)return;h.G++;a.G++;h.GF+=eff.gcEff;h.GS+=eff.gtEff;a.GF+=eff.gtEff;a.GS+=eff.gcEff;if(eff.double){h.P++;a.P++;}else if(eff.gcEff>eff.gtEff){h.V++;h.Pt+=3;a.P++;}else if(eff.gcEff<eff.gtEff){a.V++;a.Pt+=3;h.P++;}else{h.N++;a.N++;h.Pt++;a.Pt++;}});Object.values(stats).forEach(s=>s.DR=s.GF-s.GS);return Object.values(stats).sort((a,b)=>b.Pt-a.Pt||b.DR-a.DR||b.GF-a.GF||a.squadra.localeCompare(b.squadra));}
-function render(){const cl=calcolaClassifica();const groups={};CALENDARIO.forEach(m=>{if(!groups[m.g])groups[m.g]=[];groups[m.g].push(m);});const giornate=Object.keys(groups).map(Number).sort((a,b)=>a-b);document.getElementById('app').innerHTML='<div class="max-w-[1100px] mx-auto p-6"><h1 class="text-3xl font-bold mb-2">FIFA20 Bettoline • VIEW ONLY</h1><p class="text-white/50 text-sm mb-6">Classifica live • '+CALENDARIO.filter(m=>parseEff(m).played).length+' giocate</p><div class="rounded-xl overflow-hidden bg-[#121a29] border border-white/10"><table class="w-full text-sm"><thead class="text-white/40 text-xs"><tr><th class="text-left p-2">#</th><th class="text-left">Squadra</th><th>Pt</th><th>G</th><th>V</th><th>N</th><th>P</th><th>GF</th><th>GS</th><th>DR</th></tr></thead><tbody>'+cl.map((s,i)=>'<tr class="border-t border-white/5"><td class="p-2">'+(i+1)+'</td><td>'+s.squadra+'</td><td class="text-center font-bold">'+s.Pt+'</td><td class="text-center">'+s.G+'</td><td class="text-center">'+s.V+'</td><td class="text-center">'+s.N+'</td><td class="text-center">'+s.P+'</td><td class="text-center">'+s.GF+'</td><td class="text-center">'+s.GS+'</td><td class="text-center">'+s.DR+'</td></tr>').join('')+'</tbody></table></div><div class="mt-6 space-y-4">'+giornate.map(g=>'<div class="rounded-xl bg-[#121a29] p-4 border border-white/10"><h3 class="font-bold mb-2">Giornata '+g+'</h3><div class="space-y-1">'+groups[g].map(m=>{const e=parseEff(m);const sc=e.played?e.gcEff+':'+e.gtEff:'-:-';return '<div class="flex justify-between text-sm py-1"><span>'+m.casa+' vs '+m.trasferta+'</span><span>'+sc+' '+e.status+'</span></div>';}).join('')+'</div></div>').join('')+'</div></div>';}
-render();
-</script></body></html>`;
-}
-
-function esportaExcel(){
-  if(typeof XLSX==='undefined'){ alert('SheetJS non caricato, verifica connessione'); return; }
-  const rows=[['Giornata','Casa','GC','GT','Trasferta','Stato','GC_eff','GT_eff']];
-  CALENDARIO.forEach(m=>{const e=parseEff(m); rows.push([m.g,m.casa,m.gc,m.gt,m.trasferta,e.status,e.gcEff??'',e.gtEff??'']);});
-  const ws=XLSX.utils.aoa_to_sheet(rows); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'Calendario'); XLSX.writeFile(wb,'fifa20_bettoline.xlsx');
-}
-
-// INIT
-window.apriAdmin=apriAdmin; window.esciAdmin=esciAdmin; window.resetAll=resetAll; window.salvaPubblica=salvaPubblica; window.esportaExcel=esportaExcel;
-render();
-window.addEventListener('hashchange',()=>{ const admin=isAdminMode(); if(admin!==isAdmin){ isAdmin=admin; render(); } });
-</script>
-</body>
-</html>
+window.addEventListener('hashchange',()=>{const admin=location.search.toLowerCase().includes('bettoline')||location.hash.toLowerCase().includes('admin');if(admin!==isAdmin){isAdmin=admin;render();}});
+render();</script>
+</body></html>
